@@ -15,7 +15,7 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
 
 - Prepare the RedPajama model (f16 and q4_0) for gglm:
 
-        bash ./examples/redpajama/scripts/install-RedPajama-INCITE-Chat-3B-v1.sh
+        bash ./examples/redpajama/scripts/install-RedPajama-INCITE-Chat-3B-v0.1.sh
 
 - Run RedPajama chat model (fp16):
 
