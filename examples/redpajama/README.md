@@ -6,18 +6,22 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
 
 ## Usage:
 
-### RedPajama Chat model:
+### RedPajama Chat Model:
 
 - Make the code:
 
         make redpajama-chat quantize-gptneox
 
 
-- Prepare the RedPajama model (f16 and q4_0) for gglm:
+- Prepare the RedPajama chat models (f16 and q4_0) for gglm, right now we support: RedPajama-INCITE-Chat-3B-v1 and RedPajama-INCITE-Chat-7B-v0.1:
 
         bash ./examples/redpajama/scripts/install-RedPajama-INCITE-Chat-3B-v1.sh
 
-- Run RedPajama chat model (fp16):
+    or
+
+        bash ./examples/redpajama/scripts/install-RedPajama-INCITE-Chat-7B-v1.sh
+
+- Run RedPajama chat model (e.g. 3B-v1, fp16):
 
         ./redpajama-chat -m ./examples/redpajama/models/pythia/ggml-RedPajama-INCITE-Chat-3B-v1-f16.bin \
         -c 2048 \
@@ -39,7 +43,7 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
         pip install transformers==4.28.1
 
 
-- Run RedPajama chat model (q4_0):
+- Run RedPajama chat model (e.g., 3B-v1, q4_0):
 
         ./redpajama-chat -m ./examples/redpajama/models/pythia/ggml-RedPajama-INCITE-Chat-3B-v1-q4_0.bin \
         -c 2048 \
@@ -65,7 +69,7 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
 
         python ./examples/redpajama/scripts/quantize-gptneox.py ./examples/redpajama/models/pythia/ggml-RedPajama-INCITE-Chat-3B-v1-f16.bin --quantize-output-type q4_1
 
-  - Then you can chat with the quantized model:
+  - Then you can chat with this quantized model:
 
         ./redpajama-chat -m ./examples/redpajama/models/pythia/ggml-RedPajama-INCITE-Chat-3B-v1-q4_1.bin \
         -c 2048 \
