@@ -19,7 +19,7 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
 
     or
 
-        bash ./examples/redpajama/scripts/install-RedPajama-INCITE-Chat-7B-v1.sh
+        bash ./examples/redpajama/scripts/install-RedPajama-INCITE-Chat-7B.sh
 
 - Run RedPajama chat model (e.g. 3B-v1, fp16):
 
@@ -43,20 +43,20 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
         pip install transformers==4.28.1
 
 
-- Run RedPajama chat model (e.g., 3B-v1, q4_0):
+- Run RedPajama chat model (e.g., 7B, q4_0):
 
-        ./redpajama-chat -m ./examples/redpajama/models/pythia/ggml-RedPajama-INCITE-Chat-3B-v1-q4_0.bin \
+        ./redpajama-chat -m ./examples/redpajama/models/pythia/ggml-RedPajama-INCITE-7B-Chat-q4_0.bin \
         -c 2048 \
         -b 128 \
         -n 1 \
         -t 8 \
         --instruct \
         --color \
-        --top_k 30 \
+        --top_k 50 \
         --top_p 0.95 \
-        --temp 0.8 \
+        --temp 0.95 \
         --repeat_last_n 3 \
-        --repeat_penalty 1.1 \
+        --repeat_penalty 1.0 \
         --seed 0
 
 - Run other quantized version of RedPajama Chat model (Make sure you get the f16 model prepared before you run this):
