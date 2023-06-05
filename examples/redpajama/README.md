@@ -8,6 +8,13 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
 
 ### RedPajama Chat Model:
 
+- Dependencies
+
+    You may need to install torch and transformers to run the above scripts, e.g.:
+        
+        pip install torch==2.0.0
+        pip install transformers==4.28.1
+
 - Make the code:
 
         make redpajama-chat quantize-gptneox
@@ -36,11 +43,6 @@ We highly appreciate the great effort from the fork of [gptneox.cpp](https://git
         --repeat_last_n 3 \
         --repeat_penalty 1.1 \
         --seed 0
-
-    Note that you may need to install torch and transformers to run the above scripts, e.g.:
-        
-        pip install torch==2.0.0
-        pip install transformers==4.28.1
 
 
 - Run RedPajama chat model (e.g., 7B, q4_0):
