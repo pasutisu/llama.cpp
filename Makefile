@@ -308,6 +308,27 @@ server: examples/server/server.cpp examples/server/httplib.h examples/server/jso
 train-text-from-scratch: examples/train-text-from-scratch/train-text-from-scratch.cpp    build-info.h ggml.o llama.o $(OBJS)
 	$(CXX) $(CXXFLAGS) $(filter-out %.h,$^) -o $@ $(LDFLAGS)
 
+gptneox.o: examples/redpajama/gptneox.cpp ggml.h examples/redpajama/gptneox.h examples/redpajama/gptneox-util.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+common-gptneox.o: examples/redpajama/common-gptneox.cpp examples/redpajama/common-gptneox.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+quantize-gptneox: examples/redpajama/quantize-gptneox.cpp ggml.o gptneox.o $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+
+redpajama: examples/redpajama/main-redpajama.cpp ggml.o gptneox.o common-gptneox.o $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+	@echo
+	@echo '====  Run ./redpajama -h for help.  ===='
+	@echo
+
+redpajama-chat: examples/redpajama/main-redpajama-chat.cpp ggml.o gptneox.o common-gptneox.o $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+	@echo
+	@echo '====  Run ./redpajama-chat -h for help.  ===='
+	@echo
+
 build-info.h: $(wildcard .git/index) scripts/build-info.sh
 	@sh scripts/build-info.sh > $@.tmp
 	@if ! cmp -s $@.tmp $@; then \
